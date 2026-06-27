@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Almanac — A Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1b29; --ink-soft:#3a3a4d;
+    --paper:#efe7d6; --paper-2:#e7dcc6;
+    --line:rgba(27,27,41,0.16); --line-strong:rgba(27,27,41,0.34);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#9c6d16;}
+
+  header{border-bottom:2px solid var(--ink);padding:64px 0 44px;}
+  h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(54px,11vw,108px);line-height:0.9;letter-spacing:-0.02em;margin:14px 0 0;}
+  header p{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(17px,2.2vw,22px);line-height:1.4;max-width:560px;color:var(--ink-soft);margin:20px 0 0;}
+
+  main{padding:48px 0 40px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+  .entry{display:block;text-decoration:none;color:inherit;border:2px solid var(--ink);border-radius:10px;background:var(--paper-2);padding:30px 28px 26px;position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease;}
+  .entry:hover{transform:translateY(-4px);box-shadow:6px 8px 0 var(--accent2);}
+  .entry:focus-visible{outline:3px solid var(--accent2);outline-offset:3px;}
+  .entry .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .entry .yr{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(64px,12vw,96px);line-height:0.82;letter-spacing:-0.02em;}
+  .entry .yr span{color:var(--accent2);}
+  .stamp{border:2.5px solid var(--stamp);color:var(--stamp);border-radius:6px;padding:9px 12px 7px;text-align:center;transform:rotate(-7deg);font-family:'Space Mono',monospace;line-height:1;flex:0 0 auto;opacity:0.92;}
+  .stamp .s-top{font-size:9px;letter-spacing:0.3em;border-bottom:1.5px solid var(--stamp);padding-bottom:4px;}
+  .stamp .s-day{font-size:32px;font-weight:700;padding:6px 0 1px;}
+  .stamp .s-bot{font-size:9px;letter-spacing:0.2em;}
+  .entry h2{font-family:'Fraunces',serif;font-weight:600;font-size:24px;margin:18px 0 6px;letter-spacing:-0.01em;}
+  .entry .meta{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
+  .entry p{font-size:14px;color:var(--ink-soft);margin:12px 0 18px;}
+  .entry .go{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--accent2);}
+  .entry .go::after{content:" →";}
+
+  .e66{--accent:#bd8722;--accent2:#1f5e5b;--stamp:#9e3b1c;}
+  .e63{--accent:#c2502e;--accent2:#2b4a6f;--stamp:#2b4a6f;}
+
+  footer{border-top:2px solid var(--ink);padding:26px 0 60px;}
+  footer p{font-size:13px;color:var(--ink-soft);max-width:620px;margin:0;}
+  footer .mono{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#9c6d16;margin-bottom:8px;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">A personal collection</div>
+    <h1>The Almanac</h1>
+    <p>Verified portraits of the years and the dates that anchor them, who was born into them, what was invented, what topped the charts, and the long shadow of a single day across the centuries.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+      <a class="entry e66" href="1966_almanac.html">
+        <div class="top">
+          <div class="yr">19<span>66</span></div>
+          <div class="stamp"><div class="s-top">RECURRING</div><div class="s-day">22</div><div class="s-bot">MAY</div></div>
+        </div>
+        <h2>The year 1966</h2>
+        <div class="meta">Born-year almanac · May 22</div>
+        <p>The World Cup year. Actors and famous names born into it, the inventions, the music and films, and May 22 traced from Constantine to Pac-Man.</p>
+        <div class="go">Open the 1966 almanac</div>
+      </a>
+
+      <a class="entry e63" href="1963_almanac.html">
+        <div class="top">
+          <div class="yr">19<span>63</span></div>
+          <div class="stamp"><div class="s-top">RECURRING</div><div class="s-day">24</div><div class="s-bot">SEP</div></div>
+        </div>
+        <h2>The year 1963</h2>
+        <div class="meta">Born-year almanac · September 24</div>
+        <p>The year of Beatlemania and the Kennedy assassination. The names born into it, the inventions, the charts and films, and September 24 across history.</p>
+        <div class="go">Open the 1963 almanac</div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">An Almanac · checked, not scraped</p>
+    <p>Every entry links out to read more. Facts are verified against primary or strong secondary sources; a few period prices are marked indicative where exact figures vary.</p>
+  </div>
+</footer>
+
+</body>
+</html>

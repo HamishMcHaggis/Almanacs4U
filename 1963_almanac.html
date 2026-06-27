@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1963 — An Almanac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1b29; --ink-soft:#3a3a4d;
+    --paper:#efe7d6; --paper-2:#e7dcc6; --paper-3:#ded2b8;
+    --accent:#c2502e; --accent-deep:#9c3c1f;   /* persimmon */
+    --accent2:#2b4a6f;                          /* deep navy */
+    --stamp:#2b4a6f;                            /* navy */
+    --line:rgba(27,27,41,0.16); --line-strong:rgba(27,27,41,0.34);
+    --sw:#c2502e;
+  }
+  [data-theme="indigo"]{--accent:#3a4ea0;--accent-deep:#2c3c80;--accent2:#b5532a;--stamp:#2c3c80;}
+  [data-theme="forest"]{--accent:#5a7d2a;--accent-deep:#46641d;--accent2:#9c5a1f;--stamp:#46641d;}
+  [data-theme="plum"]{--accent:#8a3d6b;--accent-deep:#6f2f55;--accent2:#3f7c79;--stamp:#6f2f55;}
+  [data-theme="night"]{--ink:#ece6d6;--ink-soft:#b9b3a4;--paper:#1d1f25;--paper-2:#262932;--paper-3:#2f333d;--accent:#d8a43e;--accent-deep:#e3b35a;--accent2:#56b3ad;--stamp:#d2724f;--line:rgba(236,230,214,0.16);--line-strong:rgba(236,230,214,0.34);}
+  *{box-sizing:border-box;}
+  .theme-switch{display:flex;align-items:center;gap:9px;margin-top:24px;flex-wrap:wrap;}
+  .ts-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-deep);}
+  .sw{width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);background:var(--sw);cursor:pointer;padding:0;transition:transform .15s ease,box-shadow .15s ease;}
+  .sw:hover{transform:scale(1.12);}
+  .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink);}
+  .sw:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;}
+  .card.wide{grid-column:1/-1;}
+  .toplist{margin:12px 0 6px;padding:0;list-style:none;counter-reset:t;}
+  .toplist li{counter-increment:t;display:flex;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line);font-size:15px;}
+  .toplist li:first-child{border-top:0;}
+  .toplist li::before{content:counter(t);font-family:'Space Mono',monospace;font-size:12px;color:var(--accent-deep);min-width:16px;}
+  .toplist a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);font-weight:600;}
+  .toplist a:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep);}
+  .toplist a::after{content:"↗";font-size:0.6em;vertical-align:super;margin-left:2px;opacity:0.5;}
+  .toplist .by{color:var(--ink-soft);font-size:13.5px;}
+  .src{font-size:12px;color:var(--ink-soft);margin:6px 0 0;font-style:italic;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent);color:var(--paper);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .mono{font-family:'Space Mono',monospace;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent-deep);}
+
+  header.hero{border-bottom:2px solid var(--ink);padding:46px 0 36px;position:relative;overflow:hidden;}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+  .hero-left{max-width:660px;}
+  .hero .year{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(96px,20vw,220px);line-height:0.82;letter-spacing:-0.02em;margin:14px 0 0;color:var(--ink);}
+  .hero .year span{color:var(--accent2);}
+  .hero .thesis{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(18px,2.4vw,24px);line-height:1.35;margin:22px 0 0;max-width:560px;color:var(--ink-soft);}
+  .hero .thesis b{color:var(--ink);font-weight:600;}
+
+  .stamp{border:2.5px solid var(--stamp);color:var(--stamp);border-radius:6px;padding:12px 16px 10px;text-align:center;transform:rotate(-7deg);font-family:'Space Mono',monospace;line-height:1;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(43,74,111,0.25);opacity:0.92;}
+  .stamp .s-top{font-size:11px;letter-spacing:0.34em;border-bottom:1.5px solid var(--stamp);padding-bottom:6px;}
+  .stamp .s-day{font-size:46px;font-weight:700;padding:8px 0 2px;letter-spacing:0.02em;}
+  .stamp .s-bot{font-size:10px;letter-spacing:0.22em;}
+
+  nav.tabs{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:2px solid var(--ink);}
+  .tabs-inner{display:flex;gap:0;flex-wrap:wrap;}
+  .tab{appearance:none;background:transparent;border:0;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.04em;padding:16px 18px 14px;color:var(--ink-soft);border-bottom:3px solid transparent;transition:color .18s ease,border-color .18s ease,background .18s ease;}
+  .tab .num{color:var(--accent-deep);margin-right:8px;}
+  .tab:hover{color:var(--ink);background:var(--paper-2);}
+  .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent2);}
+  .tab:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px;}
+
+  main{padding:48px 0 80px;}
+  .panel{display:none;animation:rise .4s ease both;}
+  .panel.active{display:block;}
+  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .panel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:6px;}
+  .panel-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.04;margin:8px 0 0;letter-spacing:-0.01em;}
+  .panel-intro{max-width:680px;color:var(--ink-soft);font-size:15.5px;margin:14px 0 26px;}
+  .count{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent-deep);letter-spacing:0.1em;white-space:nowrap;}
+
+  .controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px;}
+  .search{position:relative;flex:1 1 260px;max-width:380px;}
+  .search input{width:100%;font-family:'Archivo',sans-serif;font-size:14px;padding:11px 13px 11px 38px;background:var(--paper-2);border:1.5px solid var(--line-strong);border-radius:4px;color:var(--ink);}
+  .search input::placeholder{color:rgba(27,27,41,0.45);}
+  .search input:focus{outline:none;border-color:var(--accent2);background:#fbf3ea;}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:0.5;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{appearance:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.04em;padding:8px 13px;border-radius:30px;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink-soft);transition:all .15s ease;}
+  .chip:hover{border-color:var(--ink);color:var(--ink);}
+  .chip[aria-pressed="true"]{background:var(--accent2);border-color:var(--accent2);color:var(--paper);}
+  .chip:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+
+  .table-scroll{overflow-x:auto;border:1.5px solid var(--ink);border-radius:6px;background:var(--paper-2);}
+  table{width:100%;border-collapse:collapse;min-width:560px;}
+  thead th{font-family:'Space Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;text-align:left;color:var(--paper);background:var(--ink);padding:12px 16px;cursor:pointer;user-select:none;white-space:nowrap;}
+  thead th:hover{background:#262636;}
+  thead th .arr{opacity:0.35;margin-left:6px;font-size:10px;}
+  thead th[data-dir="asc"] .arr,thead th[data-dir="desc"] .arr{opacity:1;color:var(--accent);}
+  tbody td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:top;font-size:14.5px;}
+  tbody tr:nth-child(even){background:rgba(27,27,41,0.028);}
+  tbody tr:hover{background:rgba(194,80,46,0.10);}
+  td.name{font-weight:600;white-space:nowrap;}
+  td.when,td.place,td.region{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+  td a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px;transition:color .15s ease,border-color .15s ease;}
+  td a:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep);}
+  td a:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+  td a::after{content:"↗";font-size:0.72em;vertical-align:super;margin-left:2px;opacity:0.45;}
+  td.role span{display:inline-block;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.05em;padding:3px 8px;border-radius:3px;border:1px solid var(--line-strong);color:var(--ink-soft);text-transform:uppercase;white-space:nowrap;}
+  td.role span.dual{border-color:var(--accent-deep);color:var(--accent-deep);}
+  td.year{font-family:'Space Mono',monospace;font-weight:700;color:var(--accent2);font-size:14px;white-space:nowrap;}
+  .empty-row td{text-align:center;color:var(--ink-soft);font-style:italic;padding:28px;}
+
+  .note{margin-top:22px;padding:16px 18px;border-left:3px solid var(--accent);background:var(--paper-2);border-radius:0 4px 4px 0;font-size:14px;color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+  .note a{color:var(--accent-deep);}
+  .subhead{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-deep);margin:38px 0 14px;display:flex;align-items:center;gap:12px;}
+  .subhead::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  footer{border-top:2px solid var(--ink);padding:28px 0 60px;}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+  footer p{font-size:13px;color:var(--ink-soft);max-width:640px;margin:0;}
+  footer .mono{font-size:11px;letter-spacing:0.1em;color:var(--accent-deep);}
+  .series{font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);margin-top:10px;}
+  .series a{color:var(--accent-deep);}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:16px;}
+  .card{border:1.5px solid var(--ink);border-radius:6px;background:var(--paper-2);padding:18px 18px 16px;}
+  .card .c-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-deep);}
+  .card .c-value{font-family:'Fraunces',serif;font-weight:600;font-size:30px;line-height:1.05;margin:8px 0 8px;letter-spacing:-0.01em;color:var(--ink);}
+  .card .c-value a{color:inherit;text-decoration:none;border-bottom:2px solid var(--accent);}
+  .card .c-value a:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep);}
+  .card .c-value a:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+  .card .c-value a::after{content:"↗";font-size:0.5em;vertical-align:super;margin-left:3px;opacity:0.5;}
+  .card p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+
+  @media (max-width:640px){
+    .hero .thesis{font-size:17px;}
+    .stamp{transform:rotate(-7deg) scale(0.85);}
+    tbody td,thead th{padding-left:12px;padding-right:12px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="hero-left">
+        <div class="eyebrow">An almanac · who, what, and when</div>
+        <h1 class="year">19<span>63</span></h1>
+        <p class="thesis">The people born into it, the things invented during it, and the long shadow of one date, <b>September 24</b>, across the centuries. Every entry links out to read more.</p>
+      </div>
+      <div class="stamp" aria-hidden="true">
+        <div class="s-top">RECURRING</div>
+        <div class="s-day">24</div>
+        <div class="s-bot">SEP</div>
+      </div>
+    </div>
+    <div class="theme-switch" role="group" aria-label="Colour theme">
+      <span class="ts-label">Theme</span>
+      <button class="sw" data-theme="" aria-label="Signature" style="--sw:#c2502e"></button>
+      <button class="sw" data-theme="indigo" aria-label="Indigo" style="--sw:#3a4ea0"></button>
+      <button class="sw" data-theme="forest" aria-label="Forest" style="--sw:#5a7d2a"></button>
+      <button class="sw" data-theme="plum" aria-label="Plum" style="--sw:#8a3d6b"></button>
+      <button class="sw" data-theme="night" aria-label="Night" style="--sw:#20232b"></button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <div class="tabs-inner" role="tablist">
+      <button class="tab" role="tab" aria-selected="true"  data-panel="brit"><span class="num">01</span>British actors</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="global"><span class="num">02</span>Global actors</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="invent"><span class="num">03</span>Inventions</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="sep24"><span class="num">04</span>September 24 in history</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="culture"><span class="num">05</span>The year in culture</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="signs"><span class="num">06</span>Signs &amp; symbols</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <section class="panel active" id="brit" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 01</div><h2>British actors born in 1963</h2></div><div class="count" id="brit-count"></div></div>
+      <p class="panel-intro">Verified against multiple sources, names linked to their pages. A strong year for British screen villains and character leads. Click any column to sort; type to filter.</p>
+      <div class="controls"><div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="brit" placeholder="Filter by name, work, place…" aria-label="Filter British actors"></div></div>
+      <div class="table-scroll"><table id="brit-table"></table></div>
+      <div class="note"><b>Born in 1963 but no longer living:</b> Caroline Aherne (died 2016), Natasha Richardson (died 2009), and singer Whitney Houston (died 2012), so they are left off this living-actors list.</div>
+    </section>
+
+    <section class="panel" id="global" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 02</div><h2>Global actors born in 1963</h2></div><div class="count" id="global-count"></div></div>
+      <p class="panel-intro">The same year, read across regions. Filter by region, sort by birth date, or search a name. The notable tier, not the full set.</p>
+      <div class="controls">
+        <div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="global" placeholder="Filter by name, work…" aria-label="Filter global actors"></div>
+        <div class="chips" id="global-chips"></div>
+      </div>
+      <div class="table-scroll"><table id="global-table"></table></div>
+      <div class="note"><b>A heavyweight year:</b> Johnny Depp, Brad Pitt, and Quentin Tarantino were all born in 1963, alongside leads across France's neighbour Germany, Mexico, and China.</div>
+    </section>
+
+    <section class="panel" id="invent" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 03</div><h2>Invented or unveiled in 1963</h2></div><div class="count" id="invent-count"></div></div>
+      <p class="panel-intro">Breakthroughs dated to 1963, from the cassette to the computer mouse. Where a year is borderline it is marked, not smuggled in.</p>
+      <div class="controls"><div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="invent" placeholder="Filter inventions…" aria-label="Filter inventions"></div></div>
+      <div class="table-scroll"><table id="invent-table"></table></div>
+      <div class="subhead">Space and science firsts of 1963</div>
+      <div class="table-scroll"><table id="space-table"></table></div>
+      <div class="note"><b>Adjacent:</b> the computer mouse was a working prototype by 1963 but was not patented until 1967, and the cassette, shown to the world at the 1963 Berlin Radio Show, reached the US the following year.</div>
+    </section>
+
+    <section class="panel" id="sep24" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 04</div><h2>September 24, across the centuries</h2></div><div class="count" id="sep24-count"></div></div>
+      <p class="panel-intro">The 267th day of the year. Sort by year to walk it forward, or search for a person, place, or event.</p>
+      <div class="controls"><div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="sep24" placeholder="Filter events…" aria-label="Filter September 24 events"></div></div>
+      <div class="table-scroll"><table id="sep24-table"></table></div>
+      <div class="subhead">Born on September 24</div>
+      <div class="table-scroll"><table id="births-table"></table></div>
+      <div class="subhead">Died on September 24</div>
+      <div class="table-scroll"><table id="deaths-table"></table></div>
+      <div class="note"><b>Where the two threads meet:</b> on September 24, 1964, the Warren Commission delivered its report on the assassination that had defined 1963's final November. The year that opened with the cassette and the computer mouse closed in national grief.</div>
+    </section>
+
+    <section class="panel" id="culture" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 05</div><h2>The year in culture</h2></div></div>
+      <p class="panel-intro">What topped the charts, won the big prize, and entered the language in 1963.</p>
+      <div class="cards">
+        <div class="card"><div class="c-label">Word of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Beatlemania" target="_blank" rel="noopener">Beatlemania</a></div><p>The term was coined in 1963 as the Beatles took over Britain; a promoter is said to have used it in Glasgow that October.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (US)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Sugar_Shack" target="_blank" rel="noopener">Sugar Shack</a></div><p>Jimmy Gilmer and the Fireballs topped Billboard's year-end chart for 1963, five weeks at number one.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (UK)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a></div><p>The Beatles' single was Britain's best-selling record of 1963, and the biggest seller of the decade.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (AU)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a></div><p>The Beatles led Australia's year-end chart for 1963, holding number one into early 1964 (Kent Music Report).</p></div>
+        <div class="card"><div class="c-label">Number one on this date</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Blue_Velvet_(song)" target="_blank" rel="noopener">Blue Velvet</a></div><p>On 24 September 1963 Bobby Vinton led the US Hot 100. In Britain, <a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> by the Beatles held number one.</p></div>
+        <div class="card wide"><div class="c-label">UK top 5 this week</div>
+          <ol class="toplist">
+            <li><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> <span class="by">The Beatles</span></li>
+            <li><a href="https://en.wikipedia.org/wiki/It%27s_All_in_the_Game_(song)" target="_blank" rel="noopener">It's All in the Game</a> <span class="by">Cliff Richard</span></li>
+            <li><a href="https://en.wikipedia.org/wiki/Bad_to_Me" target="_blank" rel="noopener">Bad to Me</a> <span class="by">Billy J. Kramer &amp; the Dakotas</span></li>
+            <li>I Want to Stay Here <span class="by">Steve Lawrence &amp; Eydie Gormé</span></li>
+            <li>I'll Never Get Over You <span class="by">Johnny Kidd &amp; the Pirates</span></li>
+          </ol>
+          <p class="src">UK singles chart, week of 19 to 25 September 1963.</p>
+        </div>
+        <div class="card"><div class="c-label">Christmas number one</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a></div><p>The Beatles held the UK Christmas number one. In the US, <a href="https://en.wikipedia.org/wiki/Dominique_(song)" target="_blank" rel="noopener">Dominique</a> by the Singing Nun topped the festive chart.</p></div>
+        <div class="card"><div class="c-label">Album of the Year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Barbra_Streisand_Album" target="_blank" rel="noopener">The Barbra Streisand Album</a></div><p>Her debut took the Grammy for Album of the Year, her breakout onto the national stage.</p></div>
+        <div class="card"><div class="c-label">Best Picture</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Tom_Jones_(1963_film)" target="_blank" rel="noopener">Tom Jones</a></div><p>Tony Richardson's bawdy romp won the Academy Award for the films of 1963.</p></div>
+        <div class="card"><div class="c-label">Top-grossing film</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Cleopatra_(1963_film)" target="_blank" rel="noopener">Cleopatra</a></div><p>The lavish Elizabeth Taylor epic was the year's box-office leader, and nearly bankrupted its studio.</p></div>
+        <div class="card"><div class="c-label">Cost of living</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Australian_pound" target="_blank" rel="noopener">Pounds, shillings, pence</a></div><p>Money was still &pound;sd, with decimal currency three years away. Indicative figures: the new EH Holden sold for around &pound;1,000 and the basic weekly wage was about &pound;15.</p></div>
+        <div class="card"><div class="c-label">Average house price</div><div class="c-value">&pound;2,840</div><p>That was the UK average. In the US the median was about $19,300. Reliable Australian capital-city data begins around 1970 (Sydney's median was $18,700 then), so early-1960s figures are sparse. Indicative.</p></div>
+        <div class="card"><div class="c-label">Who was in charge</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Robert_Menzies" target="_blank" rel="noopener">Robert Menzies</a></div><p>Menzies led Australia. <a href="https://en.wikipedia.org/wiki/John_F._Kennedy" target="_blank" rel="noopener">John F. Kennedy</a> held the White House, two months from Dallas, and <a href="https://en.wikipedia.org/wiki/Harold_Macmillan" target="_blank" rel="noopener">Harold Macmillan</a> Number 10 in his final weeks. <a href="https://en.wikipedia.org/wiki/Elizabeth_II" target="_blank" rel="noopener">Queen Elizabeth II</a> reigned; <a href="https://en.wikipedia.org/wiki/Pope_Paul_VI" target="_blank" rel="noopener">Pope Paul VI</a>, newly elected that June, led the Church.</p></div>
+        <div class="card"><div class="c-label">Champions of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/1963_VFL_grand_final" target="_blank" rel="noopener">Geelong</a></div><p>Geelong won the VFL premiership and <a href="https://en.wikipedia.org/wiki/Gatum_Gatum" target="_blank" rel="noopener">Gatum Gatum</a> took the Melbourne Cup. In Europe, <a href="https://en.wikipedia.org/wiki/1963_European_Cup_Winners%27_Cup_final" target="_blank" rel="noopener">Tottenham Hotspur</a> became the first British club to win a European trophy.</p></div>
+      </div>
+      <div class="subhead">Famous people born in 1963</div>
+      <div class="table-scroll"><table id="famous-table"></table></div>
+    </section>
+
+    <section class="panel" id="signs" role="tabpanel">
+      <div class="panel-head"><div><div class="eyebrow">Section 06</div><h2>Signs &amp; symbols</h2></div></div>
+      <p class="panel-intro">The almanac's older trade: the traditional markers tied to the year and to September 24. Folklore rather than science, and offered in that spirit.</p>
+      <div class="cards">
+        <div class="card"><div class="c-label">Western zodiac</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Libra_(astrology)" target="_blank" rel="noopener">Libra</a></div><p>The Scales, an air sign ruled by Venus. September 24 falls in early Libra, just past the Virgo cusp.</p></div>
+        <div class="card"><div class="c-label">Chinese zodiac</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Rabbit_(zodiac)" target="_blank" rel="noopener">Water Rabbit</a></div><p>The lunar year Gui Mao began on 25 January 1963. Gentle and diplomatic, drawn to calm and harmony.</p></div>
+        <div class="card"><div class="c-label">Birthstone</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Sapphire" target="_blank" rel="noopener">Sapphire</a></div><p>September's stone, a blue corundum tied to wisdom and loyalty.</p></div>
+        <div class="card"><div class="c-label">Birth flowers</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Aster_(genus)" target="_blank" rel="noopener">Aster</a></div><p>With morning glory, the traditional blooms of September.</p></div>
+        <div class="card"><div class="c-label">Lucky numbers</div><div class="c-value">6 · 9</div><p>Traditionally linked to Libra; the Rabbit adds 3, 4 and 9.</p></div>
+        <div class="card"><div class="c-label">Lucky day &amp; colours</div><div class="c-value">Friday</div><p>Venus's day. Blue and pink are the Libra colours.</p></div>
+        <div class="card"><div class="c-label">Numerology</div><div class="c-value">6</div><p>September 24 reduces to 6, the number tied to Venus and Libra. The digits of 1963 reduce to 1.</p></div>
+        <div class="card"><div class="c-label">That day</div><div class="c-value">Tuesday</div><p>September 24, 1963 was a Tuesday, the 267th day of the year, at the turn into autumn.</p></div>
+        <div class="card"><div class="c-label">Generation</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Baby_boomers" target="_blank" rel="noopener">Baby Boomer</a></div><p>A late Baby Boomer (1946 to 1964), born near the cusp of Generation X.</p></div>
+        <div class="card"><div class="c-label">Life path number</div><div class="c-value">7</div><p>Reducing 24 September 1963 (9 + 6 + 1) gives life path 7, the seeker: analytical, introspective, drawn to depth.</p></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p>Birth years verified across multiple sources where possible; people no longer living are noted and excluded from the actor lists. Every entry links to a reference page. The actor lists are notable tiers, not exhaustive censuses.</p>
+      <div class="series">Series: <a href="1966_almanac.html">← 1966 &amp; May 22</a> · <b>1963</b></div>
+    </div>
+    <div class="mono">COMPILED 2026 · 1963 ALMANAC</div>
+  </div>
+</footer>
+
+<script>
+const W="https://en.wikipedia.org/wiki/";
+const data = {
+  brit:{cols:[{key:"name",label:"Name",cls:"name",link:true},{key:"sort",label:"Born",cls:"when",show:"born"},{key:"place",label:"Place",cls:"place"},{key:"role",label:"Field",cls:"role",render:"role"},{key:"work",label:"Known for",cls:"work"}],
+  rows:[
+    {name:"David Thewlis",born:"20 Mar 1963",sort:"1963-03-20",place:"Blackpool",role:"Actor",work:"Naked, Harry Potter (Lupin), Fargo",url:W+"David_Thewlis"},
+    {name:"Philip Glenister",born:"10 Feb 1963",sort:"1963-02-10",place:"London",role:"Actor",work:"Life on Mars, Ashes to Ashes",url:W+"Philip_Glenister"},
+    {name:"Jason Isaacs",born:"6 Jun 1963",sort:"1963-06-06",place:"Liverpool",role:"Actor",work:"Harry Potter (Lucius Malfoy), The White Lotus",url:W+"Jason_Isaacs"},
+    {name:"Mark Strong",born:"5 Aug 1963",sort:"1963-08-05",place:"London",role:"Actor",work:"Tinker Tailor Soldier Spy, Kingsman, 1917",url:W+"Mark_Strong"},
+    {name:"Hugh Bonneville",born:"10 Nov 1963",sort:"1963-11-10",place:"London",role:"Actor",work:"Downton Abbey, Paddington, W1A",url:W+"Hugh_Bonneville"},
+    {name:"Jerome Flynn",born:"16 Mar 1963",sort:"1963-03-16",place:"Bromley",role:"Actor",work:"Game of Thrones (Bronn), Soldier Soldier",url:W+"Jerome_Flynn"},
+    {name:"Rupert Graves",born:"30 Jun 1963",sort:"1963-06-30",place:"Weston-super-Mare",role:"Actor",work:"Sherlock (Lestrade), A Room with a View",url:W+"Rupert_Graves"},
+    {name:"Sanjeev Bhaskar",born:"31 Oct 1963",sort:"1963-10-31",place:"Ealing",role:"Actor / comedian",dual:true,work:"Goodness Gracious Me, Unforgotten",url:W+"Sanjeev_Bhaskar"},
+    {name:"Nick Berry",born:"16 Apr 1963",sort:"1963-04-16",place:"London",role:"Actor / singer",dual:true,work:"EastEnders, Heartbeat",url:W+"Nick_Berry"},
+    {name:"Todd Carty",born:"31 Aug 1963",sort:"1963-08-31",place:"London",role:"Actor / director",dual:true,work:"Grange Hill, EastEnders",url:W+"Todd_Carty"},
+    {name:"Lysette Anthony",born:"26 Sep 1963",sort:"1963-09-26",place:"London",role:"Actor",work:"Husbands and Wives, Hollyoaks",url:W+"Lysette_Anthony"},
+    {name:"Armando Iannucci",born:"28 Nov 1963",sort:"1963-11-28",place:"Glasgow",role:"Writer / director",dual:true,work:"The Thick of It, Veep, The Death of Stalin",url:W+"Armando_Iannucci"}
+  ]},
+  global:{cols:[{key:"name",label:"Name",cls:"name",link:true},{key:"sort",label:"Born",cls:"when",show:"born"},{key:"region",label:"Region",cls:"region"},{key:"country",label:"Country",cls:"place"},{key:"work",label:"Known for",cls:"work"}],
+  rows:[
+    {name:"Johnny Depp",born:"9 Jun 1963",sort:"1963-06-09",region:"North America",country:"USA",work:"Edward Scissorhands, Pirates of the Caribbean",url:W+"Johnny_Depp"},
+    {name:"Brad Pitt",born:"18 Dec 1963",sort:"1963-12-18",region:"North America",country:"USA",work:"Fight Club, Once Upon a Time in Hollywood",url:W+"Brad_Pitt"},
+    {name:"Quentin Tarantino",born:"27 Mar 1963",sort:"1963-03-27",region:"North America",country:"USA",work:"dir. Pulp Fiction, Kill Bill",url:W+"Quentin_Tarantino"},
+    {name:"Lisa Kudrow",born:"30 Jul 1963",sort:"1963-07-30",region:"North America",country:"USA",work:"Friends, The Comeback",url:W+"Lisa_Kudrow"},
+    {name:"Helen Hunt",born:"15 Jun 1963",sort:"1963-06-15",region:"North America",country:"USA",work:"Mad About You, As Good as It Gets",url:W+"Helen_Hunt"},
+    {name:"Greg Kinnear",born:"17 Jun 1963",sort:"1963-06-17",region:"North America",country:"USA",work:"Little Miss Sunshine, As Good as It Gets",url:W+"Greg_Kinnear"},
+    {name:"John Stamos",born:"19 Aug 1963",sort:"1963-08-19",region:"North America",country:"USA",work:"Full House",url:W+"John_Stamos"},
+    {name:"Conan O'Brien",born:"18 Apr 1963",sort:"1963-04-18",region:"North America",country:"USA",work:"Late-night host, comedian",url:W+"Conan_O'Brien"},
+    {name:"Phoebe Cates",born:"16 Jul 1963",sort:"1963-07-16",region:"North America",country:"USA",work:"Fast Times at Ridgemont High, Gremlins",url:W+"Phoebe_Cates"},
+    {name:"Benjamin Bratt",born:"16 Dec 1963",sort:"1963-12-16",region:"North America",country:"USA",work:"Law & Order, Miss Congeniality",url:W+"Benjamin_Bratt"},
+    {name:"Mike Myers",born:"25 May 1963",sort:"1963-05-25",region:"North America",country:"Canada",work:"Wayne's World, Austin Powers, Shrek",url:W+"Mike_Myers"},
+    {name:"Til Schweiger",born:"19 Dec 1963",sort:"1963-12-19",region:"Europe",country:"Germany",work:"Inglourious Basterds, Manta Manta",url:W+"Til_Schweiger"},
+    {name:"Demián Bichir",born:"1 Aug 1963",sort:"1963-08-01",region:"Latin America",country:"Mexico",work:"A Better Life, The Bridge",url:W+"Demián_Bichir"},
+    {name:"Jet Li",born:"26 Apr 1963",sort:"1963-04-26",region:"Asia",country:"China",work:"Once Upon a Time in China, Hero",url:W+"Jet_Li"}
+  ]},
+  invent:{cols:[{key:"thing",label:"Innovation",cls:"name",link:true},{key:"who",label:"People / place",cls:"place"},{key:"why",label:"Significance",cls:"work"}],
+  rows:[
+    {thing:"Compact Cassette",who:"Philips · Netherlands",why:"Unveiled at the Berlin Radio Show, the small tape and matching players made recorded music cheap and portable.",url:W+"Cassette_tape"},
+    {thing:"Touch-Tone telephone",who:"Bell System · USA",why:"A push-button keypad sending audio tones began to replace the rotary dial, connecting calls faster.",url:W+"Push-button_telephone"},
+    {thing:"Computer mouse",who:"Douglas Engelbart, SRI · USA",why:"The first prototype of the pointing device, conceived in 1963; the patent followed in 1967.",url:W+"Computer_mouse"},
+    {thing:"Hypertext",who:"Ted Nelson · USA",why:"Coined the term for linked, non-linear text, an idea at the root of the web.",url:W+"Hypertext"},
+    {thing:"Lava lamp",who:"Edward Craven Walker · UK",why:"The \"Astro\" lamp, a fixture of 1960s design, still made by his company Mathmos.",url:W+"Lava_lamp"},
+    {thing:"Valium (diazepam)",who:"Roche · Switzerland",why:"Introduced in 1963; it became one of the most prescribed drugs of its era.",url:W+"Diazepam"},
+    {thing:"Measles vaccine",who:"John Enders and colleagues · USA",why:"The first measles vaccine is licensed, a major public-health advance.",url:W+"Measles_vaccine"},
+    {thing:"ASCII",who:"ASA X3 committee · USA",why:"The character-encoding standard is first published, still underlying how text is stored.",url:W+"ASCII"},
+    {thing:"Smiley face",who:"Harvey Ball · USA",why:"Designed the yellow smiley to lift the morale of insurance-company staff.",url:W+"Smiley"}
+  ]},
+  space:{cols:[{key:"mission",label:"Event",cls:"name",link:true},{key:"date",label:"Date",cls:"when"},{key:"first",label:"First",cls:"work"}],
+  rows:[
+    {mission:"Faith 7 (Mercury-Atlas 9)",date:"15 May 1963",first:"The last and longest solo US Mercury flight, piloted by Gordon Cooper.",url:W+"Mercury-Atlas_9"},
+    {mission:"Vostok 6 — Valentina Tereshkova",date:"16 Jun 1963",first:"Tereshkova becomes the first woman in space (USSR).",url:W+"Valentina_Tereshkova"},
+    {mission:"Syncom 2",date:"26 Jul 1963",first:"First geosynchronous communications satellite (USA).",url:W+"Syncom"}
+  ]},
+  sep24:{cols:[{key:"year",label:"Year",cls:"year"},{key:"event",label:"Event",cls:"work",link:true}],
+  rows:[
+    {year:1789,event:"The US Congress passes the Judiciary Act, creating the federal courts and the Supreme Court.",url:W+"Judiciary_Act_of_1789"},
+    {year:1852,event:"Henri Giffard makes the first powered, steerable airship flight, near Paris.",url:W+"Henri_Giffard"},
+    {year:1869,event:"\"Black Friday\": a gold-cornering scheme by Fisk and Gould collapses the US gold market.",url:W+"Black_Friday_(1869)"},
+    {year:1906,event:"Theodore Roosevelt proclaims Devils Tower the first US national monument.",url:W+"Devils_Tower"},
+    {year:1929,event:"Jimmy Doolittle flies the first entirely instrument-guided \"blind\" flight.",url:W+"Jimmy_Doolittle"},
+    {year:1932,event:"The Poona Pact is signed by Gandhi and Ambedkar over electorates for India's depressed classes.",url:W+"Poona_Pact"},
+    {year:1944,event:"The Allied retreat from Arnhem ends Operation Market Garden in failure.",url:W+"Operation_Market_Garden"},
+    {year:1948,event:"Soichiro Honda founds the Honda Motor Company in Japan.",url:W+"Honda"},
+    {year:1957,event:"Eisenhower sends federal troops to enforce desegregation at Little Rock; Camp Nou opens in Barcelona.",url:W+"Little_Rock_Nine"},
+    {year:1960,event:"The USS Enterprise, the first nuclear-powered aircraft carrier, is launched.",url:W+"USS_Enterprise_(CVN-65)"},
+    {year:1964,event:"The Warren Commission delivers its report on the assassination of John F. Kennedy.",url:W+"Warren_Commission"},
+    {year:1968,event:"\"60 Minutes\" premieres on CBS, becoming US television's longest-running prime-time show.",url:W+"60_Minutes"},
+    {year:1973,event:"Guinea-Bissau declares independence from Portugal.",url:W+"Guinea-Bissau"},
+    {year:1988,event:"Ben Johnson wins the Olympic 100 m in 9.79 s, then is stripped days later for doping.",url:W+"Ben_Johnson_(sprinter)"},
+    {year:1991,event:"Nirvana releases \"Nevermind.\"",url:W+"Nevermind"},
+    {year:1996,event:"The Comprehensive Nuclear-Test-Ban Treaty opens for signature at the UN.",url:W+"Comprehensive_Nuclear-Test-Ban_Treaty"},
+    {year:2005,event:"Hurricane Rita strikes the Texas–Louisiana coast.",url:W+"Hurricane_Rita"},
+    {year:2014,event:"India's Mars Orbiter Mission reaches Mars orbit on its first attempt.",url:W+"Mars_Orbiter_Mission"},
+    {year:2016,event:"The National Museum of African American History and Culture opens on the National Mall.",url:W+"National_Museum_of_African_American_History_and_Culture"}
+  ]},
+  births:{cols:[{key:"year",label:"Year",cls:"year"},{key:"name",label:"Name",cls:"name",link:true},{key:"who",label:"Note",cls:"work"}],
+  rows:[
+    {year:1755,name:"John Marshall",who:"Fourth Chief Justice of the United States",url:W+"John_Marshall"},
+    {year:1896,name:"F. Scott Fitzgerald",who:"American novelist, The Great Gatsby",url:W+"F._Scott_Fitzgerald"},
+    {year:1936,name:"Jim Henson",who:"Creator of the Muppets",url:W+"Jim_Henson"},
+    {year:1941,name:"Linda McCartney",who:"Photographer and musician",url:W+"Linda_McCartney"}
+  ]},
+  deaths:{cols:[{key:"year",label:"Year",cls:"year"},{key:"name",label:"Name",cls:"name",link:true},{key:"who",label:"Note",cls:"work"}],
+  rows:[
+    {year:1834,name:"Pedro I of Brazil",who:"Founding emperor of Brazil, also King Pedro IV of Portugal",url:W+"Pedro_I_of_Brazil"},
+    {year:1939,name:"Carl Laemmle",who:"Founder of Universal Pictures",url:W+"Carl_Laemmle"},
+    {year:1945,name:"Hans Geiger",who:"German physicist, co-creator of the Geiger counter",url:W+"Hans_Geiger"},
+    {year:1991,name:"Dr. Seuss",who:"American children's author (Theodor Geisel)",url:W+"Dr._Seuss"}
+  ]},
+  famous:{cols:[{key:"name",label:"Name",cls:"name",link:true},{key:"sort",label:"Born",cls:"when",show:"born"},{key:"field",label:"Field",cls:"region"},{key:"work",label:"Known for",cls:"work"}],
+  rows:[
+    {name:"Michael Jordan",born:"17 Feb 1963",sort:"1963-02-17",field:"Sport",work:"Six-time NBA champion",url:W+"Michael_Jordan"},
+    {name:"Jensen Huang",born:"17 Feb 1963",sort:"1963-02-17",field:"Technology",work:"Co-founder and CEO of Nvidia",url:W+"Jensen_Huang"},
+    {name:"Garry Kasparov",born:"13 Apr 1963",sort:"1963-04-13",field:"Chess",work:"World Chess Champion, 1985 to 2000",url:W+"Garry_Kasparov"},
+    {name:"Seal",born:"19 Feb 1963",sort:"1963-02-19",field:"Music",work:"British singer-songwriter",url:W+"Seal_(musician)"},
+    {name:"George Michael",born:"25 Jun 1963",sort:"1963-06-25",field:"Music",work:"English singer-songwriter (1963 to 2016)",url:W+"George_Michael"},
+    {name:"Whitney Houston",born:"9 Aug 1963",sort:"1963-08-09",field:"Music",work:"American singer (1963 to 2012)",url:W+"Whitney_Houston"}
+  ]}
+};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function cellHTML(row,col){
+  if(col.render==="role") return '<span'+(row.dual?' class="dual"':'')+'>'+esc(row.role)+'</span>';
+  const v = col.show ? row[col.show] : row[col.key];
+  const text = (v===undefined||v===null)?'':esc(v);
+  if(col.link && row.url) return '<a href="'+row.url+'" target="_blank" rel="noopener">'+text+'</a>';
+  return text;
+}
+function buildTable(id,spec){
+  const t=document.getElementById(id);if(!t)return;
+  let h='<thead><tr>';
+  spec.cols.forEach(c=>{h+='<th data-key="'+(c.show||c.key)+'"><span>'+c.label+'</span><span class="arr">▲▼</span></th>';});
+  h+='</tr></thead><tbody>';
+  spec.rows.forEach(r=>{h+='<tr>';spec.cols.forEach(c=>{h+='<td class="'+c.cls+'">'+cellHTML(r,c)+'</td>';});h+='</tr>';});
+  h+='</tbody>';t.innerHTML=h;attachSort(t,spec);
+}
+function attachSort(table,spec){
+  const ths=table.querySelectorAll('thead th');
+  ths.forEach(th=>{
+    th.addEventListener('click',()=>{
+      const key=th.dataset.key, dir=th.dataset.dir==='asc'?'desc':'asc';
+      ths.forEach(o=>{o.removeAttribute('data-dir');o.querySelector('.arr').textContent='▲▼';});
+      th.dataset.dir=dir; th.querySelector('.arr').textContent=dir==='asc'?'▲':'▼';
+      const rows=spec.rows.slice();
+      rows.sort((a,b)=>{
+        let av=a[key],bv=b[key];
+        if(typeof av==='number'&&typeof bv==='number') return dir==='asc'?av-bv:bv-av;
+        av=(''+av).toLowerCase();bv=(''+bv).toLowerCase();
+        if(av<bv)return dir==='asc'?-1:1; if(av>bv)return dir==='asc'?1:-1; return 0;
+      });
+      const tb=table.querySelector('tbody');tb.innerHTML='';
+      rows.forEach(r=>{const tr=document.createElement('tr');spec.cols.forEach(c=>{const td=document.createElement('td');td.className=c.cls;td.innerHTML=cellHTML(r,c);tr.appendChild(td);});tb.appendChild(tr);});
+      applyFilters();
+    });
+  });
+}
+const state={brit:{q:''},global:{q:'',region:'All'},invent:{q:''},sep24:{q:''}};
+function filterTable(tableId,q){
+  const table=document.getElementById(tableId);if(!table)return 0;
+  const rows=table.querySelectorAll('tbody tr:not(.empty-row)');let shown=0;
+  rows.forEach(tr=>{
+    let ok=tr.textContent.toLowerCase().indexOf(q.toLowerCase())>-1;
+    if(ok&&tableId==='global-table'&&state.global.region!=='All') ok=tr.children[2].textContent.trim()===state.global.region;
+    tr.style.display=ok?'':'none';if(ok)shown++;
+  });
+  let er=table.querySelector('.empty-row');
+  if(shown===0){if(!er){er=document.createElement('tr');er.className='empty-row';const td=document.createElement('td');td.colSpan=table.querySelectorAll('thead th').length;td.textContent='No matches. Clear the filter to see everything.';er.appendChild(td);table.querySelector('tbody').appendChild(er);}er.style.display='';}
+  else if(er){er.style.display='none';}
+  return shown;
+}
+function applyFilters(){
+  document.getElementById('brit-count').textContent=filterTable('brit-table',state.brit.q)+' people';
+  document.getElementById('global-count').textContent=filterTable('global-table',state.global.q)+' people';
+  document.getElementById('invent-count').textContent=filterTable('invent-table',state.invent.q)+' entries';
+  filterTable('space-table','');
+  document.getElementById('sep24-count').textContent=filterTable('sep24-table',state.sep24.q)+' events';
+  filterTable('births-table','');
+}
+['brit','global','invent','space','sep24','births','deaths','famous'].forEach(k=>buildTable(k+'-table',data[k]));
+const regions=['All',...Array.from(new Set(data.global.rows.map(r=>r.region)))];
+const chipWrap=document.getElementById('global-chips');
+regions.forEach((rg,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=rg;b.setAttribute('aria-pressed',i===0?'true':'false');b.addEventListener('click',()=>{state.global.region=rg;chipWrap.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');applyFilters();});chipWrap.appendChild(b);});
+document.querySelectorAll('input[data-search]').forEach(inp=>{inp.addEventListener('input',()=>{state[inp.dataset.search].q=inp.value;applyFilters();});});
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(tab=>{tab.addEventListener('click',()=>{tabs.forEach(t=>t.setAttribute('aria-selected','false'));tab.setAttribute('aria-selected','true');document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(tab.dataset.panel).classList.add('active');window.scrollTo({top:document.querySelector('nav.tabs').offsetTop,behavior:'smooth'});});});
+applyFilters();
+(function(){var root=document.documentElement;var sws=document.querySelectorAll('.sw');function set(t){if(t){root.setAttribute('data-theme',t);}else{root.removeAttribute('data-theme');}sws.forEach(function(b){b.setAttribute('aria-pressed',(b.dataset.theme||'')===(t||'')?'true':'false');});try{localStorage.setItem('almanac-theme',t||'');}catch(e){}}sws.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.theme||'');});});var s='';try{s=localStorage.getItem('almanac-theme')||'';}catch(e){}set(s);})();
+</script>
+</body>
+</html>
