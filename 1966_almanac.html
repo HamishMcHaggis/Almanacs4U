@@ -38,6 +38,19 @@
   .toplist a::after{content:"↗";font-size:0.6em;vertical-align:super;margin-left:2px;opacity:0.5;}
   .toplist .by{color:var(--ink-soft);font-size:13.5px;}
   .src{font-size:12px;color:var(--ink-soft);margin:6px 0 0;font-style:italic;}
+  .play{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--paper);background:var(--accent2);text-decoration:none;border-radius:4px;padding:2px 7px;margin-left:7px;white-space:nowrap;vertical-align:middle;transition:background .15s ease;}
+  .play:hover{background:var(--accent-deep);}
+  .play:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+  .tvcols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:14px;}
+  @media(max-width:640px){.tvcols{grid-template-columns:1fr;}}
+  .tvcol h4{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent-deep);margin:0 0 8px;border-bottom:1.5px solid var(--line);padding-bottom:6px;}
+  .tvcol h4 span{display:block;font-size:10px;letter-spacing:0.02em;color:var(--ink-soft);text-transform:none;margin-top:3px;font-weight:400;font-style:italic;}
+  .tvcol ol{margin:0;padding-left:20px;}
+  .tvcol li{font-size:13.5px;padding:3px 0;line-height:1.35;}
+  .tvcol li a{color:inherit;text-decoration:none;border-bottom:1px solid var(--accent);}
+  .tvcol li a:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep);}
+  .tvcol .by{color:var(--ink-soft);font-size:12px;}
+  .tvcol .src{font-size:11px;margin-top:8px;}
   html{scroll-behavior:smooth;}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent);color:var(--paper);}
@@ -213,6 +226,7 @@
     <section class="panel" id="may22" role="tabpanel">
       <div class="panel-head"><div><div class="eyebrow">Section 04</div><h2>May 22, across the centuries</h2></div><div class="count" id="may22-count"></div></div>
       <p class="panel-intro">The 142nd day of the year. Sort by year to walk it forward, or search for a person, place, or event.</p>
+      <div class="cards"><div class="card"><div class="c-label">This date also marks</div><div class="c-value" style="font-size:24px;line-height:1.15;">Biodiversity &amp; Harvey Milk Day</div><p>Each year, 22 May is the UN's <a href="https://en.wikipedia.org/wiki/International_Day_for_Biological_Diversity" target="_blank" rel="noopener">International Day for Biological Diversity</a>, and in California it is <a href="https://en.wikipedia.org/wiki/Harvey_Milk_Day" target="_blank" rel="noopener">Harvey Milk Day</a>, marking the activist born this day in 1930.</p></div></div>
       <div class="controls"><div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="may22" placeholder="Filter events…" aria-label="Filter May 22 events"></div></div>
       <div class="table-scroll"><table id="may22-table"></table></div>
       <div class="subhead">Born on May 22</div>
@@ -227,28 +241,62 @@
       <p class="panel-intro">What topped the charts, won the big prize, and entered the language in 1966.</p>
       <div class="cards">
         <div class="card"><div class="c-label">Word of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Acid_rock" target="_blank" rel="noopener">Acid rock</a></div><p>First recorded in 1966 as psychedelic guitar music spread. The same year, "Black Power" entered the national vocabulary.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (US)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Ballad_of_the_Green_Berets" target="_blank" rel="noopener">The Ballad of the Green Berets</a></div><p>SSgt Barry Sadler's ballad was Billboard's year-end number one, five weeks at the top.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (UK)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Green,_Green_Grass_of_Home" target="_blank" rel="noopener">Green, Green Grass of Home</a></div><p>Tom Jones's million-seller was Britain's best-selling single of 1966, and its Christmas number one.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (AU)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/These_Boots_Are_Made_for_Walkin%27" target="_blank" rel="noopener">These Boots Are Made for Walkin'</a></div><p>Nancy Sinatra topped Australia's year-end chart, eight weeks at number one (Kent Music Report).</p></div>
-        <div class="card"><div class="c-label">Number one on this date</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Monday,_Monday" target="_blank" rel="noopener">Monday, Monday</a></div><p>On 22 May 1966 the Mamas &amp; the Papas sat atop the US Hot 100. In Britain, <a href="https://en.wikipedia.org/wiki/Pretty_Flamingo" target="_blank" rel="noopener">Pretty Flamingo</a> by Manfred Mann held number one.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (US)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Ballad_of_the_Green_Berets" target="_blank" rel="noopener">The Ballad of the Green Berets</a><a class="play" href="https://www.youtube.com/results?search_query=Ballad+of+the+Green+Berets+Barry+Sadler" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>SSgt Barry Sadler's ballad was Billboard's year-end number one, five weeks at the top.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (UK)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Green,_Green_Grass_of_Home" target="_blank" rel="noopener">Green, Green Grass of Home</a><a class="play" href="https://www.youtube.com/results?search_query=Green+Green+Grass+of+Home+Tom+Jones" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Tom Jones's million-seller was Britain's best-selling single of 1966, and its Christmas number one.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (AU)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/These_Boots_Are_Made_for_Walkin%27" target="_blank" rel="noopener">These Boots Are Made for Walkin'</a><a class="play" href="https://www.youtube.com/results?search_query=These+Boots+Are+Made+for+Walkin+Nancy+Sinatra" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Nancy Sinatra topped Australia's year-end chart, eight weeks at number one (Kent Music Report).</p></div>
+        <div class="card"><div class="c-label">Number one on this date</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Monday,_Monday" target="_blank" rel="noopener">Monday, Monday</a><a class="play" href="https://www.youtube.com/results?search_query=Monday+Monday+The+Mamas+and+the+Papas" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>On 22 May 1966 the Mamas &amp; the Papas sat atop the US Hot 100. In Britain, <a href="https://en.wikipedia.org/wiki/Pretty_Flamingo" target="_blank" rel="noopener">Pretty Flamingo</a> by Manfred Mann held number one. <a class="play" href="https://www.youtube.com/results?search_query=Pretty+Flamingo+Manfred+Mann" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen (UK)</a></p></div>
         <div class="card wide"><div class="c-label">UK top 5 this week</div>
           <ol class="toplist">
-            <li><a href="https://en.wikipedia.org/wiki/Pretty_Flamingo" target="_blank" rel="noopener">Pretty Flamingo</a> <span class="by">Manfred Mann</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/Sloop_John_B" target="_blank" rel="noopener">Sloop John B</a> <span class="by">The Beach Boys</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/Daydream_(The_Lovin%27_Spoonful_song)" target="_blank" rel="noopener">Daydream</a> <span class="by">The Lovin' Spoonful</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/Wild_Thing_(The_Troggs_song)" target="_blank" rel="noopener">Wild Thing</a> <span class="by">The Troggs</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/Paint_It_Black" target="_blank" rel="noopener">Paint It, Black</a> <span class="by">The Rolling Stones</span></li>
+            <li><a href="https://en.wikipedia.org/wiki/Pretty_Flamingo" target="_blank" rel="noopener">Pretty Flamingo</a> <span class="by">Manfred Mann</span> <a class="play" href="https://www.youtube.com/results?search_query=Pretty+Flamingo+Manfred+Mann" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Sloop_John_B" target="_blank" rel="noopener">Sloop John B</a> <span class="by">The Beach Boys</span> <a class="play" href="https://www.youtube.com/results?search_query=Sloop+John+B+The+Beach+Boys" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Daydream_(The_Lovin%27_Spoonful_song)" target="_blank" rel="noopener">Daydream</a> <span class="by">The Lovin' Spoonful</span> <a class="play" href="https://www.youtube.com/results?search_query=Daydream+The+Lovin+Spoonful" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Wild_Thing_(The_Troggs_song)" target="_blank" rel="noopener">Wild Thing</a> <span class="by">The Troggs</span> <a class="play" href="https://www.youtube.com/results?search_query=Wild+Thing+The+Troggs" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Paint_It_Black" target="_blank" rel="noopener">Paint It, Black</a> <span class="by">The Rolling Stones</span> <a class="play" href="https://www.youtube.com/results?search_query=Paint+It+Black+The+Rolling+Stones" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
           </ol>
           <p class="src">UK singles chart, week of 19 to 25 May 1966.</p>
         </div>
-        <div class="card"><div class="c-label">Christmas number one</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Green,_Green_Grass_of_Home" target="_blank" rel="noopener">Green, Green Grass of Home</a></div><p>Tom Jones held the UK Christmas number one. In the US, the festive chart-topper was <a href="https://en.wikipedia.org/wiki/Winchester_Cathedral_(song)" target="_blank" rel="noopener">Winchester Cathedral</a> by the New Vaudeville Band.</p></div>
-        <div class="card"><div class="c-label">Album of the Year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/A_Man_and_His_Music" target="_blank" rel="noopener">A Man and His Music</a></div><p>Frank Sinatra's record took the Grammy for Album of the Year covering 1966.</p></div>
-        <div class="card"><div class="c-label">Best Picture</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/A_Man_for_All_Seasons_(1966_film)" target="_blank" rel="noopener">A Man for All Seasons</a></div><p>Fred Zinnemann's Thomas More drama won the Academy Award for the films of 1966.</p></div>
-        <div class="card"><div class="c-label">Top-grossing film</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Bible:_In_the_Beginning..." target="_blank" rel="noopener">The Bible: In the Beginning...</a></div><p>John Huston's biblical epic was the year's biggest draw at the US box office.</p></div>
+        <div class="card"><div class="c-label">Christmas number one</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Green,_Green_Grass_of_Home" target="_blank" rel="noopener">Green, Green Grass of Home</a><a class="play" href="https://www.youtube.com/results?search_query=Green+Green+Grass+of+Home+Tom+Jones" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Tom Jones held the UK Christmas number one. In the US, the festive chart-topper was <a href="https://en.wikipedia.org/wiki/Winchester_Cathedral_(song)" target="_blank" rel="noopener">Winchester Cathedral</a> by the New Vaudeville Band. <a class="play" href="https://www.youtube.com/results?search_query=Winchester+Cathedral+New+Vaudeville+Band" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen (US)</a></p></div>
+        <div class="card"><div class="c-label">Album of the Year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/A_Man_and_His_Music" target="_blank" rel="noopener">A Man and His Music</a><a class="play" href="https://www.youtube.com/results?search_query=Frank+Sinatra+A+Man+and+His+Music+album" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Frank Sinatra's record took the Grammy for Album of the Year covering 1966.</p></div>
+        <div class="card"><div class="c-label">Best Picture</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/A_Man_for_All_Seasons_(1966_film)" target="_blank" rel="noopener">A Man for All Seasons</a><a class="play" href="https://www.youtube.com/results?search_query=A+Man+for+All+Seasons+1966+trailer" target="_blank" rel="noopener" aria-label="Watch trailer on YouTube">&#9654; Trailer</a></div><p>Fred Zinnemann's Thomas More drama won the Academy Award for the films of 1966.</p></div>
+        <div class="card"><div class="c-label">Top-grossing film</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Bible:_In_the_Beginning..." target="_blank" rel="noopener">The Bible: In the Beginning...</a><a class="play" href="https://www.youtube.com/results?search_query=The+Bible+In+the+Beginning+1966+trailer" target="_blank" rel="noopener" aria-label="Watch trailer on YouTube">&#9654; Trailer</a></div><p>John Huston's biblical epic was the year's biggest draw at the US box office.</p></div>
+        <div class="card" style="grid-column:1/-1;"><div class="c-label">Top TV shows that year</div>
+          <div class="tvcols">
+            <div class="tvcol"><h4>United States <span>1965&ndash;66 season, Nielsen</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/Bonanza" target="_blank" rel="noopener">Bonanza</a> <span class="by">NBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Gomer_Pyle,_U.S.M.C." target="_blank" rel="noopener">Gomer Pyle, U.S.M.C.</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Lucy_Show" target="_blank" rel="noopener">The Lucy Show</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Red_Skelton_Show" target="_blank" rel="noopener">The Red Skelton Hour</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Batman_(TV_series)" target="_blank" rel="noopener">Batman</a> <span class="by">ABC</span></li>
+              </ol>
+            </div>
+            <div class="tvcol"><h4>United Kingdom <span>biggest shows of the year</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/Coronation_Street" target="_blank" rel="noopener">Coronation Street</a> <span class="by">ITV</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Steptoe_and_Son" target="_blank" rel="noopener">Steptoe and Son</a> <span class="by">BBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Morecambe_and_Wise" target="_blank" rel="noopener">The Morecambe &amp; Wise Show</a> <span class="by">BBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Till_Death_Us_Do_Part_(British_TV_series)" target="_blank" rel="noopener">Till Death Us Do Part</a> <span class="by">BBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Doctor_Who" target="_blank" rel="noopener">Doctor Who</a> <span class="by">BBC</span></li>
+              </ol>
+              <p class="src">The 1966 World Cup final was the year's most-watched single broadcast.</p>
+            </div>
+            <div class="tvcol"><h4>Australia <span>biggest local shows</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/Homicide_(Australian_TV_series)" target="_blank" rel="noopener">Homicide</a> <span class="by">Seven</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Mavis_Bramston_Show" target="_blank" rel="noopener">The Mavis Bramston Show</a> <span class="by">Seven</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/In_Melbourne_Tonight" target="_blank" rel="noopener">In Melbourne Tonight</a> <span class="by">Nine</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Bandstand_(Australian_TV_series)" target="_blank" rel="noopener">Bandstand</a> <span class="by">Nine</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Four_Corners_(Australian_TV_program)" target="_blank" rel="noopener">Four Corners</a> <span class="by">ABC</span></li>
+              </ol>
+              <p class="src">Imported US series still topped overall ratings; early Australian ranked data is sparse.</p>
+            </div>
+          </div>
+        </div>
         <div class="card"><div class="c-label">Cost of living</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Australian_dollar" target="_blank" rel="noopener">New decimal dollars</a></div><p>Australia changed to decimal currency on 14 February 1966, dollars and cents replacing pounds. Indicative prices: bread about 20c, milk about 19c a litre, eggs about 60c a dozen, with the basic weekly wage near &pound;15 (about $30 new).</p></div>
         <div class="card"><div class="c-label">Average house price</div><div class="c-value">&pound;3,542</div><p>That was the UK average. In the US the median was about $22,900. Reliable Australian capital-city data begins around 1970 (Sydney's median was $18,700 then), so mid-1960s figures are patchy. Indicative.</p></div>
         <div class="card"><div class="c-label">Who was in charge</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Harold_Holt" target="_blank" rel="noopener">Harold Holt</a></div><p>Holt had just become Australia's PM in January. <a href="https://en.wikipedia.org/wiki/Lyndon_B._Johnson" target="_blank" rel="noopener">Lyndon B. Johnson</a> held the White House, <a href="https://en.wikipedia.org/wiki/Harold_Wilson" target="_blank" rel="noopener">Harold Wilson</a> Number 10, <a href="https://en.wikipedia.org/wiki/Elizabeth_II" target="_blank" rel="noopener">Queen Elizabeth II</a> the throne, and <a href="https://en.wikipedia.org/wiki/Pope_Paul_VI" target="_blank" rel="noopener">Pope Paul VI</a> the Church.</p></div>
         <div class="card"><div class="c-label">Champions of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/1966_FIFA_World_Cup" target="_blank" rel="noopener">England</a></div><p>England won the World Cup at Wembley. <a href="https://en.wikipedia.org/wiki/1966_VFL_grand_final" target="_blank" rel="noopener">St Kilda</a> claimed their first and only VFL premiership, and <a href="https://en.wikipedia.org/wiki/1966_Melbourne_Cup" target="_blank" rel="noopener">Galilee</a> won the Melbourne Cup.</p></div>
+        <div class="card"><div class="c-label">Top baby names</div><div class="c-value">Lisa &amp; Michael</div><p>The most popular names given to American babies in 1966 (US Social Security Administration).</p></div>
       </div>
       <div class="subhead">Famous people born in 1966</div>
       <div class="table-scroll"><table id="famous-table"></table></div>
@@ -268,6 +316,7 @@
         <div class="card"><div class="c-label">That day</div><div class="c-value">Sunday</div><p>May 22, 1966 was a Sunday, the 142nd day of the year, in late spring.</p></div>
         <div class="card"><div class="c-label">Generation</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Generation_X" target="_blank" rel="noopener">Generation X</a></div><p>Right at the start of Gen X (1965 to 1980), on the cusp of the Baby Boom that closed in 1964.</p></div>
         <div class="card"><div class="c-label">Life path number</div><div class="c-value">4</div><p>Reducing 22 May 1966 (5 + 4 + 4) gives life path 4, the builder: grounded, practical, dependable. The date also carries the master number 22.</p></div>
+        <div class="card"><div class="c-label">Moon that night</div><div class="c-value">Waxing crescent</div><p>The new moon had passed only a few nights earlier, so 22 May 1966 rose under a slim waxing crescent.</p></div>
       </div>
     </section>
 

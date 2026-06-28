@@ -38,6 +38,19 @@
   .toplist a::after{content:"↗";font-size:0.6em;vertical-align:super;margin-left:2px;opacity:0.5;}
   .toplist .by{color:var(--ink-soft);font-size:13.5px;}
   .src{font-size:12px;color:var(--ink-soft);margin:6px 0 0;font-style:italic;}
+  .play{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--paper);background:var(--accent2);text-decoration:none;border-radius:4px;padding:2px 7px;margin-left:7px;white-space:nowrap;vertical-align:middle;transition:background .15s ease;}
+  .play:hover{background:var(--accent-deep);}
+  .play:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;}
+  .tvcols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:14px;}
+  @media(max-width:640px){.tvcols{grid-template-columns:1fr;}}
+  .tvcol h4{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent-deep);margin:0 0 8px;border-bottom:1.5px solid var(--line);padding-bottom:6px;}
+  .tvcol h4 span{display:block;font-size:10px;letter-spacing:0.02em;color:var(--ink-soft);text-transform:none;margin-top:3px;font-weight:400;font-style:italic;}
+  .tvcol ol{margin:0;padding-left:20px;}
+  .tvcol li{font-size:13.5px;padding:3px 0;line-height:1.35;}
+  .tvcol li a{color:inherit;text-decoration:none;border-bottom:1px solid var(--accent);}
+  .tvcol li a:hover{color:var(--accent-deep);border-bottom-color:var(--accent-deep);}
+  .tvcol .by{color:var(--ink-soft);font-size:12px;}
+  .tvcol .src{font-size:11px;margin-top:8px;}
   html{scroll-behavior:smooth;}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent);color:var(--paper);}
@@ -213,6 +226,7 @@
     <section class="panel" id="sep24" role="tabpanel">
       <div class="panel-head"><div><div class="eyebrow">Section 04</div><h2>September 24, across the centuries</h2></div><div class="count" id="sep24-count"></div></div>
       <p class="panel-intro">The 267th day of the year. Sort by year to walk it forward, or search for a person, place, or event.</p>
+      <div class="cards"><div class="card"><div class="c-label">This date also marks</div><div class="c-value" style="font-size:24px;line-height:1.15;">Heritage Day &amp; Punctuation Day</div><p>Each year, 24 September is <a href="https://en.wikipedia.org/wiki/Heritage_Day_(South_Africa)" target="_blank" rel="noopener">Heritage Day</a> in South Africa, and in the US it is <a href="https://en.wikipedia.org/wiki/National_Punctuation_Day" target="_blank" rel="noopener">National Punctuation Day</a>.</p></div></div>
       <div class="controls"><div class="search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="text" data-search="sep24" placeholder="Filter events…" aria-label="Filter September 24 events"></div></div>
       <div class="table-scroll"><table id="sep24-table"></table></div>
       <div class="subhead">Born on September 24</div>
@@ -227,28 +241,62 @@
       <p class="panel-intro">What topped the charts, won the big prize, and entered the language in 1963.</p>
       <div class="cards">
         <div class="card"><div class="c-label">Word of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Beatlemania" target="_blank" rel="noopener">Beatlemania</a></div><p>The term was coined in 1963 as the Beatles took over Britain; a promoter is said to have used it in Glasgow that October.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (US)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Sugar_Shack" target="_blank" rel="noopener">Sugar Shack</a></div><p>Jimmy Gilmer and the Fireballs topped Billboard's year-end chart for 1963, five weeks at number one.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (UK)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a></div><p>The Beatles' single was Britain's best-selling record of 1963, and the biggest seller of the decade.</p></div>
-        <div class="card"><div class="c-label">Year's biggest single (AU)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a></div><p>The Beatles led Australia's year-end chart for 1963, holding number one into early 1964 (Kent Music Report).</p></div>
-        <div class="card"><div class="c-label">Number one on this date</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Blue_Velvet_(song)" target="_blank" rel="noopener">Blue Velvet</a></div><p>On 24 September 1963 Bobby Vinton led the US Hot 100. In Britain, <a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> by the Beatles held number one.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (US)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Sugar_Shack" target="_blank" rel="noopener">Sugar Shack</a><a class="play" href="https://www.youtube.com/results?search_query=Sugar+Shack+Jimmy+Gilmer+and+the+Fireballs" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Jimmy Gilmer and the Fireballs topped Billboard's year-end chart for 1963, five weeks at number one.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (UK)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a><a class="play" href="https://www.youtube.com/results?search_query=She+Loves+You+The+Beatles" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>The Beatles' single was Britain's best-selling record of 1963, and the biggest seller of the decade.</p></div>
+        <div class="card"><div class="c-label">Year's biggest single (AU)</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a><a class="play" href="https://www.youtube.com/results?search_query=I+Want+to+Hold+Your+Hand+The+Beatles" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>The Beatles led Australia's year-end chart for 1963, holding number one into early 1964 (Kent Music Report).</p></div>
+        <div class="card"><div class="c-label">Number one on this date</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Blue_Velvet_(song)" target="_blank" rel="noopener">Blue Velvet</a><a class="play" href="https://www.youtube.com/results?search_query=Blue+Velvet+Bobby+Vinton" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>On 24 September 1963 Bobby Vinton led the US Hot 100. In Britain, <a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> by the Beatles held number one. <a class="play" href="https://www.youtube.com/results?search_query=She+Loves+You+The+Beatles" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen (UK)</a></p></div>
         <div class="card wide"><div class="c-label">UK top 5 this week</div>
           <ol class="toplist">
-            <li><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> <span class="by">The Beatles</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/It%27s_All_in_the_Game_(song)" target="_blank" rel="noopener">It's All in the Game</a> <span class="by">Cliff Richard</span></li>
-            <li><a href="https://en.wikipedia.org/wiki/Bad_to_Me" target="_blank" rel="noopener">Bad to Me</a> <span class="by">Billy J. Kramer &amp; the Dakotas</span></li>
-            <li>I Want to Stay Here <span class="by">Steve Lawrence &amp; Eydie Gormé</span></li>
-            <li>I'll Never Get Over You <span class="by">Johnny Kidd &amp; the Pirates</span></li>
+            <li><a href="https://en.wikipedia.org/wiki/She_Loves_You" target="_blank" rel="noopener">She Loves You</a> <span class="by">The Beatles</span> <a class="play" href="https://www.youtube.com/results?search_query=She+Loves+You+The+Beatles" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/It%27s_All_in_the_Game_(song)" target="_blank" rel="noopener">It's All in the Game</a> <span class="by">Cliff Richard</span> <a class="play" href="https://www.youtube.com/results?search_query=Its+All+in+the+Game+Cliff+Richard" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Bad_to_Me" target="_blank" rel="noopener">Bad to Me</a> <span class="by">Billy J. Kramer &amp; the Dakotas</span> <a class="play" href="https://www.youtube.com/results?search_query=Bad+to+Me+Billy+J+Kramer+and+the+Dakotas" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li>I Want to Stay Here <span class="by">Steve Lawrence &amp; Eydie Gormé</span> <a class="play" href="https://www.youtube.com/results?search_query=I+Want+to+Stay+Here+Steve+Lawrence+Eydie+Gorme" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
+            <li>I'll Never Get Over You <span class="by">Johnny Kidd &amp; the Pirates</span> <a class="play" href="https://www.youtube.com/results?search_query=Ill+Never+Get+Over+You+Johnny+Kidd+and+the+Pirates" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654;</a></li>
           </ol>
           <p class="src">UK singles chart, week of 19 to 25 September 1963.</p>
         </div>
-        <div class="card"><div class="c-label">Christmas number one</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a></div><p>The Beatles held the UK Christmas number one. In the US, <a href="https://en.wikipedia.org/wiki/Dominique_(song)" target="_blank" rel="noopener">Dominique</a> by the Singing Nun topped the festive chart.</p></div>
-        <div class="card"><div class="c-label">Album of the Year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Barbra_Streisand_Album" target="_blank" rel="noopener">The Barbra Streisand Album</a></div><p>Her debut took the Grammy for Album of the Year, her breakout onto the national stage.</p></div>
-        <div class="card"><div class="c-label">Best Picture</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Tom_Jones_(1963_film)" target="_blank" rel="noopener">Tom Jones</a></div><p>Tony Richardson's bawdy romp won the Academy Award for the films of 1963.</p></div>
-        <div class="card"><div class="c-label">Top-grossing film</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Cleopatra_(1963_film)" target="_blank" rel="noopener">Cleopatra</a></div><p>The lavish Elizabeth Taylor epic was the year's box-office leader, and nearly bankrupted its studio.</p></div>
+        <div class="card"><div class="c-label">Christmas number one</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/I_Want_to_Hold_Your_Hand" target="_blank" rel="noopener">I Want to Hold Your Hand</a><a class="play" href="https://www.youtube.com/results?search_query=I+Want+to+Hold+Your+Hand+The+Beatles" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>The Beatles held the UK Christmas number one. In the US, <a href="https://en.wikipedia.org/wiki/Dominique_(song)" target="_blank" rel="noopener">Dominique</a> by the Singing Nun topped the festive chart. <a class="play" href="https://www.youtube.com/results?search_query=Dominique+The+Singing+Nun" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen (US)</a></p></div>
+        <div class="card"><div class="c-label">Album of the Year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/The_Barbra_Streisand_Album" target="_blank" rel="noopener">The Barbra Streisand Album</a><a class="play" href="https://www.youtube.com/results?search_query=The+Barbra+Streisand+Album+1963" target="_blank" rel="noopener" aria-label="Listen on YouTube">&#9654; Listen</a></div><p>Her debut took the Grammy for Album of the Year, her breakout onto the national stage.</p></div>
+        <div class="card"><div class="c-label">Best Picture</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Tom_Jones_(1963_film)" target="_blank" rel="noopener">Tom Jones</a><a class="play" href="https://www.youtube.com/results?search_query=Tom+Jones+1963+film+trailer" target="_blank" rel="noopener" aria-label="Watch trailer on YouTube">&#9654; Trailer</a></div><p>Tony Richardson's bawdy romp won the Academy Award for the films of 1963.</p></div>
+        <div class="card"><div class="c-label">Top-grossing film</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Cleopatra_(1963_film)" target="_blank" rel="noopener">Cleopatra</a><a class="play" href="https://www.youtube.com/results?search_query=Cleopatra+1963+trailer" target="_blank" rel="noopener" aria-label="Watch trailer on YouTube">&#9654; Trailer</a></div><p>The lavish Elizabeth Taylor epic was the year's box-office leader, and nearly bankrupted its studio.</p></div>
+        <div class="card" style="grid-column:1/-1;"><div class="c-label">Top TV shows that year</div>
+          <div class="tvcols">
+            <div class="tvcol"><h4>United States <span>1962&ndash;63 season, Nielsen</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/The_Beverly_Hillbillies" target="_blank" rel="noopener">The Beverly Hillbillies</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Candid_Camera" target="_blank" rel="noopener">Candid Camera</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Red_Skelton_Show" target="_blank" rel="noopener">The Red Skelton Show</a> <span class="by">CBS</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Bonanza" target="_blank" rel="noopener">Bonanza</a> <span class="by">NBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Lucy_Show" target="_blank" rel="noopener">The Lucy Show</a> <span class="by">CBS</span></li>
+              </ol>
+            </div>
+            <div class="tvcol"><h4>United Kingdom <span>most-watched of the year</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/Royal_Variety_Performance" target="_blank" rel="noopener">Royal Variety Performance</a> <span class="by">ITV</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Coronation_Street" target="_blank" rel="noopener">Coronation Street</a> <span class="by">ITV</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Steptoe_and_Son" target="_blank" rel="noopener">Steptoe and Son</a> <span class="by">BBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Dr._Finlay%27s_Casebook_(1962_TV_series)" target="_blank" rel="noopener">Dr. Finlay's Casebook</a> <span class="by">BBC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Miss_World" target="_blank" rel="noopener">Miss World</a> <span class="by">BBC</span></li>
+              </ol>
+              <p class="src">Contemporary BBC/ITV ratings. Doctor Who also debuted this year, on 23 November.</p>
+            </div>
+            <div class="tvcol"><h4>Australia <span>notable local shows</span></h4>
+              <ol>
+                <li><a href="https://en.wikipedia.org/wiki/In_Melbourne_Tonight" target="_blank" rel="noopener">In Melbourne Tonight</a> <span class="by">Nine</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Bandstand_(Australian_TV_series)" target="_blank" rel="noopener">Bandstand</a> <span class="by">Nine</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Pick_a_Box" target="_blank" rel="noopener">Pick a Box</a> <span class="by">ATN</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Four_Corners_(Australian_TV_program)" target="_blank" rel="noopener">Four Corners</a> <span class="by">ABC</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Consider_Your_Verdict" target="_blank" rel="noopener">Consider Your Verdict</a> <span class="by">Seven</span></li>
+              </ol>
+              <p class="src">US imports dominated Australian ratings in 1963; local ranked data is sparse, so these are the era's notable Australian-made shows.</p>
+            </div>
+          </div>
+        </div>
         <div class="card"><div class="c-label">Cost of living</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Australian_pound" target="_blank" rel="noopener">Pounds, shillings, pence</a></div><p>Money was still &pound;sd, with decimal currency three years away. Indicative figures: the new EH Holden sold for around &pound;1,000 and the basic weekly wage was about &pound;15.</p></div>
         <div class="card"><div class="c-label">Average house price</div><div class="c-value">&pound;2,840</div><p>That was the UK average. In the US the median was about $19,300. Reliable Australian capital-city data begins around 1970 (Sydney's median was $18,700 then), so early-1960s figures are sparse. Indicative.</p></div>
         <div class="card"><div class="c-label">Who was in charge</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Robert_Menzies" target="_blank" rel="noopener">Robert Menzies</a></div><p>Menzies led Australia. <a href="https://en.wikipedia.org/wiki/John_F._Kennedy" target="_blank" rel="noopener">John F. Kennedy</a> held the White House, two months from Dallas, and <a href="https://en.wikipedia.org/wiki/Harold_Macmillan" target="_blank" rel="noopener">Harold Macmillan</a> Number 10 in his final weeks. <a href="https://en.wikipedia.org/wiki/Elizabeth_II" target="_blank" rel="noopener">Queen Elizabeth II</a> reigned; <a href="https://en.wikipedia.org/wiki/Pope_Paul_VI" target="_blank" rel="noopener">Pope Paul VI</a>, newly elected that June, led the Church.</p></div>
         <div class="card"><div class="c-label">Champions of the year</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/1963_VFL_grand_final" target="_blank" rel="noopener">Geelong</a></div><p>Geelong won the VFL premiership and <a href="https://en.wikipedia.org/wiki/Gatum_Gatum" target="_blank" rel="noopener">Gatum Gatum</a> took the Melbourne Cup. In Europe, <a href="https://en.wikipedia.org/wiki/1963_European_Cup_Winners%27_Cup_final" target="_blank" rel="noopener">Tottenham Hotspur</a> became the first British club to win a European trophy.</p></div>
+        <div class="card"><div class="c-label">Top baby names</div><div class="c-value">Lisa &amp; Michael</div><p>The most popular names given to American babies in 1963 (US Social Security Administration).</p></div>
       </div>
       <div class="subhead">Famous people born in 1963</div>
       <div class="table-scroll"><table id="famous-table"></table></div>
@@ -268,6 +316,7 @@
         <div class="card"><div class="c-label">That day</div><div class="c-value">Tuesday</div><p>September 24, 1963 was a Tuesday, the 267th day of the year, at the turn into autumn.</p></div>
         <div class="card"><div class="c-label">Generation</div><div class="c-value"><a href="https://en.wikipedia.org/wiki/Baby_boomers" target="_blank" rel="noopener">Baby Boomer</a></div><p>A late Baby Boomer (1946 to 1964), born near the cusp of Generation X.</p></div>
         <div class="card"><div class="c-label">Life path number</div><div class="c-value">7</div><p>Reducing 24 September 1963 (9 + 6 + 1) gives life path 7, the seeker: analytical, introspective, drawn to depth.</p></div>
+        <div class="card"><div class="c-label">Moon that night</div><div class="c-value">Waxing crescent</div><p>Roughly six nights past the new moon, 24 September 1963 rose under a waxing crescent climbing toward first quarter.</p></div>
       </div>
     </section>
 
